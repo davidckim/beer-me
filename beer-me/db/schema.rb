@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20150123010143) do
   create_table "locations", force: :cascade do |t|
     t.string  "name"
     t.string  "address"
+    t.integer "zip_code"
     t.integer "beer_id"
   end
 
