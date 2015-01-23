@@ -374,3 +374,49 @@ ORDER BY c.conname
   [1m[35mLocation Load (0.5ms)[0m  SELECT "locations".* FROM "locations"
   [1m[36mLocation Load (0.3ms)[0m  [1mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT 1[0m  [["id", 6]]
   [1m[35mBeer Load (0.6ms)[0m  SELECT "beers".* FROM "beers" INNER JOIN "beers_locations" ON "beers"."id" = "beers_locations"."beer_id" WHERE "beers_locations"."location_id" = $1  [["location_id", 6]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "locations" ("name", "address", "zip_code") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "21st Amendment BrewPub"], ["address", "123 A street, San Francisco, CA"], ["zip_code", 94110]]
+  [1m[35m (0.9ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "locations" ("name", "address", "zip_code") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Ziggy's Ale House"], ["address", "3049 Ale Lane, Stout-Lager, ABV"], ["zip_code", 23948]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "beers" ("name", "abv", "rating", "price") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Monk's Blood"], ["abv", "9.5%"], ["rating", "*****"], ["price", "$8.75"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "beers_locations" ("beer_id", "location_id") VALUES ($1, $2) RETURNING "id"  [["beer_id", 4], ["location_id", 7]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "beers_locations" ("beer_id", "location_id") VALUES ($1, $2) RETURNING "id"[0m  [["beer_id", 4], ["location_id", 8]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "locations" ("name", "address", "zip_code") VALUES ($1, $2, $3) RETURNING "id"  [["name", "The Beer Hall"], ["address", "9023 Haight St, San Francisco, CA"], ["zip_code", 94110]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "locations" ("name", "address", "zip_code") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Chug'n'Go"], ["address", "209 Porter Rd., Barrel Aged, OG"], ["zip_code", 76555]]
+  [1m[35m (0.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "beers" ("name", "abv", "rating", "price") VALUES ($1, $2, $3, $4) RETURNING "id"  [["name", "Shallow Grave Porter"], ["abv", "6.5%"], ["rating", "****"], ["price", "$8.75"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "beers_locations" ("beer_id", "location_id") VALUES ($1, $2) RETURNING "id"[0m  [["beer_id", 5], ["location_id", 9]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "beers_locations" ("beer_id", "location_id") VALUES ($1, $2) RETURNING "id"  [["beer_id", 5], ["location_id", 10]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "locations" ("name", "address", "zip_code") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "The Alchemist"], ["address", "74 Hop Avenue, San Francisco, CA"], ["zip_code", 94110]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "locations" ("name", "address", "zip_code") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Hofbrau"], ["address", "293 Barley Way, Pale Ale, IPA"], ["zip_code", 23948]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "beers" ("name", "abv", "rating", "price") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Full Boar Scotch Ale"], ["abv", "6.2%"], ["rating", "*****"], ["price", "$6.50"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "beers_locations" ("beer_id", "location_id") VALUES ($1, $2) RETURNING "id"  [["beer_id", 6], ["location_id", 11]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "beers_locations" ("beer_id", "location_id") VALUES ($1, $2) RETURNING "id"[0m  [["beer_id", 6], ["location_id", 12]]
+  [1m[35m (0.3ms)[0m  COMMIT
