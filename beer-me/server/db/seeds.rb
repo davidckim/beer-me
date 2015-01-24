@@ -22,7 +22,7 @@ beer1.locations << location2
 
 
 
-location3 = Location.create({name: "The Beer Hall", address: "9023 Haight St, San Francisco, CA", zip_code: 94110})
+location3 = Location.create({name: "The Beer Hall", address: "9023 Haight St, San Francisco, CA", zip_code: 94111})
 location4 = Location.create({name: "Chug'n'Go", address: "209 Porter Rd., Barrel Aged, OG", zip_code: 76555})
 
 beer2 = Beer.create(
@@ -38,7 +38,7 @@ beer2.locations << location4
 
 
 location5 = Location.create({name: "The Alchemist", address: "74 Hop Avenue, San Francisco, CA", zip_code: 94110})
-location6 = Location.create({name: "Hofbrau", address: "293 Barley Way, Pale Ale, IPA", zip_code: 23948})
+location6 = Location.create({name: "Hofbrau", address: "293 Barley Way, Pale Ale, IPA", zip_code: 94110})
 
 beer3 = Beer.create(
 	{name: "Full Boar Scotch Ale", 

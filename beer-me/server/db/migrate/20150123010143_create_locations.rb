@@ -4,7 +4,7 @@ class CreateLocations < ActiveRecord::Migration
     	t.string :name
     	t.string :address
     	t.integer :zip_code, defualt: 94110
-    	t.references :beer
+
     end
   end
 end
