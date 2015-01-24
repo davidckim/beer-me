@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(version: 20150123190904) do
     t.string  "name"
     t.string  "address"
     t.integer "zip_code"
-    t.integer "beer_id"
   end
 
 end
