@@ -1,11 +1,7 @@
-// Ionic Starter App
+var app = angular.module('beerme', ['ionic', 'ui.router'])
 
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-var app = angular.module('beerme', ['ionic'])
 
-.run(function($ionicPlatform) {
+app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -18,53 +14,81 @@ var app = angular.module('beerme', ['ionic'])
   });
 })
 
-.controller('BeerMeCtrl', function($scope, $ionicModal) {
-  $ionicModal.fromTemplateUrl('intro-page.html', function (modal) {
-    $scope.introModal = modal;
-  }, {
-  scope: $scope,
-  animation: 'slide-in-up'
-  }
-});
+app.config(function($stateProvider, $urlRouterProvider) {
 
-  $scope.generateBeerlist = function(task) {
-    $scope.tasks.push({
-      title: task.title
-    });
-  };
-});
+  $stateProvider
+    .state('home', {
+      url: '/',
+      templateUrl: "templates/home.html"
+    })
 
-.controller('BeerlistCtrl', function($scope, $http){
-  var url="routeToRAILSAPI/:zipcode";
-  $http.get(url).success( function(response) {
-    $scope.beers = response;
-  })
+    .state('beers', {
+      url: "/beers",
+      templateUrl: "templates/beers.html"
+    })
 
-}
 
-.controller("MapCtrl", function($scope) {
+    .state('tabs', {
+      url: "/tab",
+      abstract: true,
+      templateUrl: "templates/tabs.html"
+    })
+
+  $urlRouterProvider.otherwise("/");
+
+})
+
+
+app.controller("MapCtrl", function($scope, $http, $ionicLoading) {
+  
+  $scope.data = {};
+  $scope.zipCode = "0";
   $scope.lat = "0";
   $scope.lng = "0";
-  $scope.accuracy = "0";
+  $scope.beers = "";
+
+  $scope.getBeersRoute = function(zipcode) {
+    if (zipcode) {
+      $scope.zipCode = zipcode
+    };
+    var response = $http.get("https://b33r-me.herokuapp.com/beers/"+$scope.zipCode);
+    response.success(function(data) {
+      $scope.beers = data
+      console.log($scope.beers)
+    })
+  }
 
   $scope.getLocation = function () {
-    navigator.geolocation.getCurrentPosition($scope.showPosition)
+    console.log("Getting Current Location...")
+    navigator.geolocation.getCurrentPosition($scope.showPosition, $scope.failedReturn)
+  }
+
+  $scope.failedReturn = function() {
+    console.log("Failed to return current location")
   }
  
   $scope.showPosition = function(position) {
+
+    console.log("Getting zipcode....")
     $scope.lat = position.coords.latitude;
     $scope.lng = position.coords.longitude;
-    $scope.accuracy = position.coords.accuracy;
     $scope.$apply();
-    var latlng = new google.maps.LatLng($scope.lat, $scope.lng);
+
+    var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
     var zipCode = new google.maps.Geocoder().geocode({'latLng': latlng}, function (res, status) {
       var zip = res[0].address_components[7].long_name;
-      console.log(zip)
-    });
+      $scope.zipCode = zip
+      console.log("Got the zipcode")
+      $scope.getBeersRoute();
+    })
   }
-  $scope.getLocation();
-});
 
+  $scope.getZipcode = function() {
+    console.log('Get Zipcode Function Called')
+    $scope.getLocation();
+  }
+
+});
 
 
 

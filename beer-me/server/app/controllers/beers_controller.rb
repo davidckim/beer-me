@@ -1,4 +1,6 @@
 class BeersController < ApplicationController
+  before_filter :set_cors_headers
+  
 	def index 
 		@beers = Beer.all
 		render json: @beers
@@ -35,5 +37,13 @@ class BeersController < ApplicationController
 
 		render json: @beers
 	end
+
+  private
+
+    def set_cors_headers
+      headers['Access-Control-Allow-Origin'] = '*'
+      headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, PATCH, DELETE'
+      headers['Access-Control-Allow-Headers'] = 'Origin, Content-Type, Accept, Authorization, Token'
+    end
 
 end
