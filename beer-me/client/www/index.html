@@ -31,21 +31,16 @@
         <ion-content class="padding">
           <p>
             <a class="button" ng-click="getZipcode()">Beers Near Me</a>
-            <a class="button" href="#/beers">See List of Beers</a>
-
-
-
+            <a class="button" ui-sref="beers">See List of Beers</a>
 
             <form ng-submit="getBeersRoute(data.zipCode)">
               <label class="item item-input">
                 <input type="text" placeholder="Enter Zipcode" ng-model="data.zipCode">
               </label>
               <div class="padding">
-                <button type="submit" class="button button-block button-positive">Submit Zipcode</button>
+                <button type="submit" class="button button-block button-energized">Submit Zipcode</button>
                </div>
            </form>
-
-
 
           </p>
         </ion-content>
@@ -74,13 +69,17 @@
           </div>
 
           <ion-list>
-            <ion-item ng-repeat="beer in beers | filter: data.searchQuery" class="item item-button-right">
-              {{beer.name}} | Rank: {{beer.rank}}
+            <ion-item ng-repeat="beer in beers | filter: data.searchQuery" class="item item-button-right" href="#/beers/beer">
+              {{beer.name}}
             </ion-item>
           </ion-list>
         </ion-content>
       </ion-view>
 
+    </script>
+
+    <script id="templates/beer.html" type="text/ng-template">
+      <h1>Hello World</h1>
     </script>
 
 

@@ -27,6 +27,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: "templates/beers.html"
     })
 
+    .state("beer", {
+      url: '/beers/:beerObject',
+      templateUrl: "templates/beer.html",
+    })
 
     .state('tabs', {
       url: "/tab",
@@ -39,7 +43,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 })
 
 
-app.controller("MapCtrl", function($scope, $http, $ionicLoading) {
+app.controller("MapCtrl", function($scope, $http, $ionicLoading, $stateParams, $state) {
   
   $scope.data = {};
   $scope.zipCode = "0";
@@ -78,6 +82,7 @@ app.controller("MapCtrl", function($scope, $http, $ionicLoading) {
     var zipCode = new google.maps.Geocoder().geocode({'latLng': latlng}, function (res, status) {
       var zip = res[0].address_components[7].long_name;
       $scope.zipCode = zip
+      console.log(zip)
       console.log("Got the zipcode")
       $scope.getBeersRoute();
     })
