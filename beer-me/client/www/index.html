@@ -30,10 +30,10 @@
       <ion-view view-title="Home">
         <ion-content class="padding">
           <p>
-            <a class="button" ng-click="getZipcode()">Beers Near Me</a>
+            <a class="button" ng-click="getBeersList()">Beers Near Me</a>
             <a class="button" ui-sref="beers">See List of Beers</a>
 
-            <form ng-submit="getBeersRoute(data.zipCode)">
+            <form ng-submit="" ui-sref="beers">
               <label class="item item-input">
                 <input type="text" placeholder="Enter Zipcode" ng-model="data.zipCode">
               </label>
