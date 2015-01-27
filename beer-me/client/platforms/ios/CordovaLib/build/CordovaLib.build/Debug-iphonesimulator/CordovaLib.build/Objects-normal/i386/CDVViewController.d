@@ -1,0 +1,27 @@
+dependencies: \
+  /Users/davidkim/Desktop/beer-me/beer-me/client/platforms/ios/CordovaLib/Classes/CDVViewController.m \
+  /Users/davidkim/Desktop/beer-me/beer-me/client/platforms/ios/CordovaLib/Classes/CDV.h \
+  /Users/davidkim/Desktop/beer-me/beer-me/client/platforms/ios/CordovaLib/Classes/CDVAvailability.h \
+  /Users/davidkim/Desktop/beer-me/beer-me/client/platforms/ios/CordovaLib/Classes/CDVAvailabilityDeprecated.h \
+  /Users/davidkim/Desktop/beer-me/beer-me/client/platforms/ios/CordovaLib/Classes/CDVPlugin.h \
+  /Users/davidkim/Desktop/beer-me/beer-me/client/platforms/ios/CordovaLib/Classes/CDVPluginResult.h \
+  /Users/davidkim/Desktop/beer-me/beer-me/client/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.h \
+  /Users/davidkim/Desktop/beer-me/beer-me/client/platforms/ios/CordovaLib/Classes/CDVCommandDelegate.h \
+  /Users/davidkim/Desktop/beer-me/beer-me/client/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.h \
+  /Users/davidkim/Desktop/beer-me/beer-me/client/platforms/ios/CordovaLib/Classes/CDVViewController.h \
+  /Users/davidkim/Desktop/beer-me/beer-me/client/platforms/ios/CordovaLib/Classes/CDVCommandQueue.h \
+  /Users/davidkim/Desktop/beer-me/beer-me/client/platforms/ios/CordovaLib/Classes/CDVWhitelist.h \
+  /Users/davidkim/Desktop/beer-me/beer-me/client/platforms/ios/CordovaLib/Classes/CDVScreenOrientationDelegate.h \
+  /Users/davidkim/Desktop/beer-me/beer-me/client/platforms/ios/CordovaLib/Classes/CDVURLProtocol.h \
+  /Users/davidkim/Desktop/beer-me/beer-me/client/platforms/ios/CordovaLib/Classes/CDVDebug.h \
+  /Users/davidkim/Desktop/beer-me/beer-me/client/platforms/ios/CordovaLib/Classes/CDVLocalStorage.h \
+  /Users/davidkim/Desktop/beer-me/beer-me/client/platforms/ios/CordovaLib/Classes/CDVTimer.h \
+  /Users/davidkim/Desktop/beer-me/beer-me/client/platforms/ios/CordovaLib/Classes/NSArray+Comparisons.h \
+  /Users/davidkim/Desktop/beer-me/beer-me/client/platforms/ios/CordovaLib/Classes/NSData+Base64.h \
+  /Users/davidkim/Desktop/beer-me/beer-me/client/platforms/ios/CordovaLib/Classes/NSDictionary+Extensions.h \
+  /Users/davidkim/Desktop/beer-me/beer-me/client/platforms/ios/CordovaLib/Classes/UIDevice+Extensions.h \
+  /Users/davidkim/Desktop/beer-me/beer-me/client/platforms/ios/CordovaLib/Classes/CDVJSON.h \
+  /Users/davidkim/Desktop/beer-me/beer-me/client/platforms/ios/CordovaLib/Classes/CDVCommandDelegateImpl.h \
+  /Users/davidkim/Desktop/beer-me/beer-me/client/platforms/ios/CordovaLib/Classes/CDVConfigParser.h \
+  /Users/davidkim/Desktop/beer-me/beer-me/client/platforms/ios/CordovaLib/Classes/CDVUserAgentUtil.h \
+  /Users/davidkim/Desktop/beer-me/beer-me/client/platforms/ios/CordovaLib/Classes/CDVWebViewDelegate.h

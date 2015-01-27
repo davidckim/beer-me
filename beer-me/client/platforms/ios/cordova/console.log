@@ -1,0 +1,71 @@
+2015-01-23 13:54:31.599 client[21799:568745] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/davidkim/Library/Developer/CoreSimulator/Devices/D364B945-528D-4D3A-AA7F-E523E309902E/data/Containers/Data/Application/1B66CE21-F50B-4D84-959A-D9AB262210F8/Library/Cookies/Cookies.binarycookies
+2015-01-23 13:54:31.922 client[21799:568745] Apache Cordova native platform version 3.7.0 is starting.
+2015-01-23 13:54:31.923 client[21799:568745] Multi-tasking -> Device: YES, App: YES
+2015-01-23 13:54:31.945 client[21799:568745] Unlimited access to network resources
+2015-01-23 13:54:32.466 client[21799:568745] [CDVTimer][keyboard] 0.071049ms
+2015-01-23 13:54:32.662 client[21799:568745] [CDVTimer][splashscreen] 195.191979ms
+2015-01-23 13:54:32.662 client[21799:568745] [CDVTimer][TotalPluginStartup] 195.618987ms
+2015-01-23 13:54:33.477 client[21799:568745] Resetting plugins due to page load.
+2015-01-23 13:54:33.696 client[21799:568745] Finished load of: file:///Users/davidkim/Library/Developer/CoreSimulator/Devices/D364B945-528D-4D3A-AA7F-E523E309902E/data/Containers/Bundle/Application/649077A0-BDC4-4E69-BFC4-7718BE152C7F/client.app/www/index.html
+2015-01-23 13:55:17.675 client[22013:569811] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/davidkim/Library/Developer/CoreSimulator/Devices/D364B945-528D-4D3A-AA7F-E523E309902E/data/Containers/Data/Application/E4625C74-7725-42B4-825E-0F36C60C05F7/Library/Cookies/Cookies.binarycookies
+2015-01-23 13:55:17.767 client[22013:569811] Apache Cordova native platform version 3.7.0 is starting.
+2015-01-23 13:55:17.767 client[22013:569811] Multi-tasking -> Device: YES, App: YES
+2015-01-23 13:55:17.769 client[22013:569811] Unlimited access to network resources
+2015-01-23 13:55:17.959 client[22013:569811] [CDVTimer][keyboard] 0.056982ms
+2015-01-23 13:55:17.984 client[22013:569811] [CDVTimer][splashscreen] 24.855018ms
+2015-01-23 13:55:17.984 client[22013:569811] [CDVTimer][TotalPluginStartup] 25.274992ms
+2015-01-23 13:55:18.065 client[22013:569811] Resetting plugins due to page load.
+2015-01-23 13:55:18.237 client[22013:569811] Finished load of: file:///Users/davidkim/Library/Developer/CoreSimulator/Devices/D364B945-528D-4D3A-AA7F-E523E309902E/data/Containers/Bundle/Application/3EC54AA5-2245-45A9-99EF-5590E1C5A3DD/client.app/www/index.html
+2015-01-23 13:55:42.512 client[22225:570742] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/davidkim/Library/Developer/CoreSimulator/Devices/D364B945-528D-4D3A-AA7F-E523E309902E/data/Containers/Data/Application/14F81C4A-8A9F-4F09-889D-D012FEB2C614/Library/Cookies/Cookies.binarycookies
+2015-01-23 13:55:42.602 client[22225:570742] Apache Cordova native platform version 3.7.0 is starting.
+2015-01-23 13:55:42.603 client[22225:570742] Multi-tasking -> Device: YES, App: YES
+2015-01-23 13:55:42.605 client[22225:570742] Unlimited access to network resources
+2015-01-23 13:55:42.789 client[22225:570742] [CDVTimer][keyboard] 0.056982ms
+2015-01-23 13:55:42.811 client[22225:570742] [CDVTimer][splashscreen] 22.009969ms
+2015-01-23 13:55:42.811 client[22225:570742] [CDVTimer][TotalPluginStartup] 22.365987ms
+2015-01-23 13:55:42.879 client[22225:570742] Resetting plugins due to page load.
+2015-01-23 13:55:43.016 client[22225:570742] Finished load of: file:///Users/davidkim/Library/Developer/CoreSimulator/Devices/D364B945-528D-4D3A-AA7F-E523E309902E/data/Containers/Bundle/Application/E05BE02F-48CF-441F-857B-E9ED1BC1565A/client.app/www/index.html
+2015-01-25 12:35:56.423 client[67161:946483] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/davidkim/Library/Developer/CoreSimulator/Devices/D364B945-528D-4D3A-AA7F-E523E309902E/data/Containers/Data/Application/53A26708-5BF5-42CC-AC67-220E793789C8/Library/Cookies/Cookies.binarycookies
+2015-01-25 12:35:56.721 client[67161:946483] Apache Cordova native platform version 3.7.0 is starting.
+2015-01-25 12:35:56.722 client[67161:946483] Multi-tasking -> Device: YES, App: YES
+2015-01-25 12:35:56.744 client[67161:946483] Unlimited access to network resources
+2015-01-25 12:35:57.255 client[67161:946483] [CDVTimer][keyboard] 0.056982ms
+2015-01-25 12:35:57.461 client[67161:946483] [CDVTimer][splashscreen] 206.003964ms
+2015-01-25 12:35:57.461 client[67161:946483] [CDVTimer][TotalPluginStartup] 206.418991ms
+2015-01-25 12:35:57.664 client[67161:946483] Resetting plugins due to page load.
+2015-01-25 12:35:58.082 client[67161:946483] Finished load of: file:///Users/davidkim/Library/Developer/CoreSimulator/Devices/D364B945-528D-4D3A-AA7F-E523E309902E/data/Containers/Bundle/Application/88514D00-D8CA-4652-88EF-E30113E653EF/client.app/www/index.html#/
+2015-01-25 12:35:58.128 client[67161:946483] Main Controller
+2015-01-25 12:35:58.128 client[67161:946483] Map Controller
+2015-01-25 18:08:38.219 client[74348:1089109] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/davidkim/Library/Developer/CoreSimulator/Devices/D364B945-528D-4D3A-AA7F-E523E309902E/data/Containers/Data/Application/39194BCC-FC15-47CB-B968-526E8FD234B3/Library/Cookies/Cookies.binarycookies
+2015-01-25 18:08:38.526 client[74348:1089109] Apache Cordova native platform version 3.7.0 is starting.
+2015-01-25 18:08:38.526 client[74348:1089109] Multi-tasking -> Device: YES, App: YES
+2015-01-25 18:08:38.549 client[74348:1089109] Unlimited access to network resources
+2015-01-25 18:08:39.096 client[74348:1089109] [CDVTimer][keyboard] 0.055015ms
+2015-01-25 18:08:39.315 client[74348:1089109] [CDVTimer][splashscreen] 218.698978ms
+2015-01-25 18:08:39.315 client[74348:1089109] [CDVTimer][TotalPluginStartup] 219.080985ms
+2015-01-25 18:08:39.519 client[74348:1089109] Resetting plugins due to page load.
+2015-01-25 18:08:39.878 client[74348:1089109] Finished load of: file:///Users/davidkim/Library/Developer/CoreSimulator/Devices/D364B945-528D-4D3A-AA7F-E523E309902E/data/Containers/Bundle/Application/C4CFE093-3284-4AF8-BA52-1C0CC3F7FA9C/client.app/www/index.html#/
+2015-01-25 18:08:41.679 client[74348:1089109] Get Zipcode Function Called
+2015-01-25 18:08:41.679 client[74348:1089109] Getting Current Location...
+2015-01-25 18:08:59.274 client[74348:1089109] Get Zipcode Function Called
+2015-01-25 18:08:59.275 client[74348:1089109] Getting Current Location...
+2015-01-26 15:24:12.543 client[89256:1313764] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/davidkim/Library/Developer/CoreSimulator/Devices/D364B945-528D-4D3A-AA7F-E523E309902E/data/Containers/Data/Application/BE883736-E754-451C-9042-7558B17D6B0B/Library/Cookies/Cookies.binarycookies
+2015-01-26 15:24:12.837 client[89256:1313764] Apache Cordova native platform version 3.7.0 is starting.
+2015-01-26 15:24:12.837 client[89256:1313764] Multi-tasking -> Device: YES, App: YES
+2015-01-26 15:24:12.854 client[89256:1313764] Unlimited access to network resources
+2015-01-26 15:24:13.349 client[89256:1313764] [CDVTimer][keyboard] 0.055015ms
+2015-01-26 15:24:13.500 client[89256:1313764] [CDVTimer][splashscreen] 150.839031ms
+2015-01-26 15:24:13.501 client[89256:1313764] [CDVTimer][TotalPluginStartup] 151.205957ms
+2015-01-26 15:24:13.671 client[89256:1313764] Resetting plugins due to page load.
+2015-01-26 15:24:14.051 client[89256:1313764] Finished load of: file:///Users/davidkim/Library/Developer/CoreSimulator/Devices/D364B945-528D-4D3A-AA7F-E523E309902E/data/Containers/Bundle/Application/978825CD-B8F4-495A-B2D9-78EC6640221A/client.app/www/index.html#/
+2015-01-26 15:24:23.881 client[89256:1313857] Terminating since there is no system app.
+2015-01-26 15:53:07.151 client[90060:1322264] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/davidkim/Library/Developer/CoreSimulator/Devices/D364B945-528D-4D3A-AA7F-E523E309902E/data/Containers/Data/Application/6A4B633E-5AF0-4892-84FB-FD719EAD8911/Library/Cookies/Cookies.binarycookies
+2015-01-26 15:53:07.386 client[90060:1322264] Apache Cordova native platform version 3.7.0 is starting.
+2015-01-26 15:53:07.387 client[90060:1322264] Multi-tasking -> Device: YES, App: YES
+2015-01-26 15:53:07.392 client[90060:1322264] Unlimited access to network resources
+2015-01-26 15:53:07.669 client[90060:1322264] [CDVTimer][keyboard] 0.070989ms
+2015-01-26 15:53:07.883 client[90060:1322264] [CDVTimer][splashscreen] 213.995039ms
+2015-01-26 15:53:07.883 client[90060:1322264] [CDVTimer][TotalPluginStartup] 214.933991ms
+2015-01-26 15:53:08.009 client[90060:1322264] Resetting plugins due to page load.
+2015-01-26 15:53:08.442 client[90060:1322264] Finished load of: file:///Users/davidkim/Library/Developer/CoreSimulator/Devices/D364B945-528D-4D3A-AA7F-E523E309902E/data/Containers/Bundle/Application/C6B8F103-7036-4191-B4C9-BEE53B933F77/client.app/www/index.html#/
+2015-01-26 15:53:18.645 client[90060:1322325] Terminating since there is no system app.
