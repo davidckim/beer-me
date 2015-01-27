@@ -121,7 +121,7 @@ app.controller("MapCtrl", function($scope, $http, $ionicLoading, $state, MapServ
 
   $scope.getBeersByZipCode = function() {
     $ionicLoading.show({
-      template: 'Finding Beers Near You.....'
+      template: '<img src="http://i.imgur.com/2l2BiLC.gif" height="100%" width="100%">'
     });
     BeerService.getBeersList($scope.data.zipCode).then(function(response) {
       $scope.beers = response.data
@@ -134,7 +134,7 @@ app.controller("MapCtrl", function($scope, $http, $ionicLoading, $state, MapServ
   $scope.getLocation = function() {
 
   $ionicLoading.show({
-      template: 'Finding Beers Near You.....'
+      template: '<img src="http://i.imgur.com/2l2BiLC.gif" height="100%" width="100%">'
     });
 
     MapService.getLocation().then(MapService.showPosition).then(function(data) {
