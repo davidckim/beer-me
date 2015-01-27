@@ -28,7 +28,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
     })
 
     .state("beer", {
-      url: '/beers/:beerObject',
+      url: '/beers/beer',
       templateUrl: "templates/beer.html",
     })
 
@@ -43,54 +43,81 @@ app.config(function($stateProvider, $urlRouterProvider) {
 })
 
 
-app.controller("MapCtrl", function($scope, $http, $ionicLoading, $stateParams, $state) {
-  
-  $scope.data = {};
-  $scope.zipCode = "0";
-  $scope.lat = "0";
-  $scope.lng = "0";
+
+app.service('MapService', function($q) {
+
+  var zip = "";
+
+  return {
+
+    showZipCode: function() {
+      return zip
+    },
+
+    getLocation: function() {
+      console.log("first")
+      var deferred = $q.defer();
+
+      navigator.geolocation.getCurrentPosition(function(data) {
+        deferred.resolve(data)
+      }, function(err) {
+        deferred.reject(err)
+      })
+
+      return deferred.promise;
+    },
+
+    showPosition: function(position) {
+      console.log("finding zipcode.....")
+      var deferred = $q.defer();
+
+      var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      var zipCode = new google.maps.Geocoder().geocode({'latLng': latlng}, function (res, status) {
+        zip = res[0].address_components[7].long_name;
+        deferred.resolve(zip)
+      })
+      return deferred.promise
+    },
+
+    failedReturn: function() {
+      console.log("Failed to return current location")
+    }
+  }
+})
+
+
+app.service('BeerService', function(MapService) {
+  var beers = "";
+  return {
+    showBeers: function() {
+      return beers
+    },
+    getBeersList: function() {
+      return $http.get("https://b33r-me.herokuapp.com/beers/"+MapService.zip).done(function(data) {
+        beers = data
+      })
+    }
+  }
+})
+
+
+app.controller("MapCtrl", function($scope, $http, $ionicLoading, MapService, BeerService) {
+
+  $scope.zipCode = "";
   $scope.beers = "";
+  
+  $scope.getLocation = function() {
+    MapService.getLocation().then(MapService.showPosition).then(function(data) {
+      console.log(data)
+      $scope.zipCode = data
+    })
+  };
 
-  $scope.getBeersRoute = function(zipcode) {
-    if (zipcode) {
-      $scope.zipCode = zipcode
-    };
-    var response = $http.get("https://b33r-me.herokuapp.com/beers/"+$scope.zipCode);
-    response.success(function(data) {
+  $scope.getBeersList = function() {
+    BeerService.showBeers().then(function(data) {
+      console.log(data)
       $scope.beers = data
-      console.log($scope.beers)
     })
-  }
-
-  $scope.getLocation = function () {
-    console.log("Getting Current Location...")
-    navigator.geolocation.getCurrentPosition($scope.showPosition, $scope.failedReturn)
-  }
-
-  $scope.failedReturn = function() {
-    console.log("Failed to return current location")
-  }
- 
-  $scope.showPosition = function(position) {
-
-    console.log("Getting zipcode....")
-    $scope.lat = position.coords.latitude;
-    $scope.lng = position.coords.longitude;
-    $scope.$apply();
-
-    var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-    var zipCode = new google.maps.Geocoder().geocode({'latLng': latlng}, function (res, status) {
-      var zip = res[0].address_components[7].long_name;
-      $scope.zipCode = zip
-      console.log(zip)
-      console.log("Got the zipcode")
-      $scope.getBeersRoute();
-    })
-  }
-
-  $scope.getZipcode = function() {
-    console.log('Get Zipcode Function Called')
-    $scope.getLocation();
   }
 
 });
