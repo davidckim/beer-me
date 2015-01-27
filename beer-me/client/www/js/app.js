@@ -103,7 +103,7 @@ app.service('BeerService', function($http, MapService) {
 })
 
 
-app.controller("MapCtrl", function($scope, $http, $ionicLoading, $state, MapService, BeerService) {
+app.controller("MapCtrl", function($scope, $http, $ionicLoading, $state, $ionicPopup, MapService, BeerService) {
 
   $scope.data = {};
   $scope.zipCode = "";
@@ -121,8 +121,9 @@ app.controller("MapCtrl", function($scope, $http, $ionicLoading, $state, MapServ
 
   $scope.getBeersByZipCode = function() {
     $ionicLoading.show({
-      template: '<img src="http://i.imgur.com/2l2BiLC.gif" height="100%" width="100%">'
+      template: '<div style="width: 100%; background-color: #e2c634"><img src="../img/beerLoading.gif" width="100%" style="margin-top: 50%; margin-bottom: 50%"></div>'
     });
+
     BeerService.getBeersList($scope.data.zipCode).then(function(response) {
       $scope.beers = response.data
       console.log($scope.beers)
@@ -132,9 +133,8 @@ app.controller("MapCtrl", function($scope, $http, $ionicLoading, $state, MapServ
   }
   
   $scope.getLocation = function() {
-
-  $ionicLoading.show({
-      template: '<img src="http://i.imgur.com/2l2BiLC.gif" height="100%" width="100%">'
+    $ionicLoading.show({
+        template: '<div style="width: 100%; background-color: #e2c634"><img src="../img/beerLoading.gif" width="100%" style="margin-top: 50%; margin-bottom: 50%"></div>'
     });
 
     MapService.getLocation().then(MapService.showPosition).then(function(data) {
@@ -147,6 +147,22 @@ app.controller("MapCtrl", function($scope, $http, $ionicLoading, $state, MapServ
       })
     })
   };
+
+  $scope.zipcodePop = function() {
+    $ionicPopup.show({
+      template: '<input type="text" ng-model="data.zipCode">',
+      title: 'Please enter a zipcode',
+      scope: $scope,
+      buttons: [
+        { text: 'Cancel' },
+        { text: '<b>Submit</b>',
+          type: 'button-energized',
+          onTap: $scope.getBeersByZipCode
+        }
+      ]
+    })
+  }
+
 
 
 });

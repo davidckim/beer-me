@@ -27,28 +27,20 @@
     <ion-nav-view></ion-nav-view>
 
     <script id="templates/home.html" type="text/ng-template">
-      <ion-view view-title="Home">
-        <ion-content class="padding">
-          <p>
-            <a class="button" ng-click="getLocation()">Beers Near Me</a>
+      <ion-view view-title="Landing Page" class="landing-page">
+        <button class="find-beer button" ng-click="getLocation()">
+          Find Beer Near Me
+        </button> 
 
-            <form ng-submit="getBeersByZipCode()">
-              <label class="item item-input">
-                <input type="text" placeholder="Enter Zipcode" ng-model="data.zipCode">
-              </label>
-              <div class="padding">
-                <button type="submit" class="button button-block button-energized">Submit Zipcode</button>
-               </div>
-           </form>
-
-          </p>
-        </ion-content>
+        <button class="zipcode-beer button" ng-click="zipcodePop()">
+          Find Beer by Zipcode
+        </button>
       </ion-view>
     </script>
 
     <script id="templates/beers.html" type="text/ng-template">
 
-      <ion-view view-title="Beers on Tap Near You">
+      <ion-view view-title="Beers">
         <ion-nav-bar class="bar-energized">
           <ion-nav-back-button class="button-icon ion-arrow-left-c">
           </ion-nav-back-button>
@@ -68,8 +60,8 @@
           </div>
 
           <ion-list>
-            <ion-item ng-repeat="beer in beers | filter: data.searchQuery" class="item item-button-right" ng-click="showBeerFunction({{beer}})">
-
+            <ion-item ng-repeat="beer in beers | filter: data.searchQuery" class="item item-thumbnail-left" ng-click="showBeerPage({{beer}})">
+              <img src="{{beer.image}}">
               {{beer.name}}
 
             </ion-item>
@@ -79,8 +71,59 @@
 
     </script>
 
-    <script id="templates/beer.html" type="text/ng-template">
-      <h1>Hello World</h1>
+    <script id="templates/beer.html" type="text/ng-template" ng-controller="MapCtrl as beerObject">
+      
+      <ion-view view-title="{{beerObject.name}}">
+        <ion-nav-bar class="bar-energized">
+          <ion-nav-back-button class="button-icon ion-arrow-left-c">
+          </ion-nav-back-button>
+        </ion-nav-bar>
+        <ion-content class="padding">
+
+          <div class="list card">
+            <div class="item item-avatar">
+              <img src="{{beerObject.image}}">
+              <h2>{{beerObject.name}}</h2>
+              <p>{{beerObject.price}}</p>
+            </div>
+
+          <div class="item item-body">
+            <h2>Beer ABV: {{beerObject.abv}}</h2>
+            <h2>Beer Rating: {{beerObject.rating}}</h2>
+          </div>
+
+          <ion-list>
+          <h3>Bars w/ This Tap</h3>
+            <ion-item ng-repeat="bar in beerBars" class="item item-button-right" >
+
+              <p>{{bar.name}}</p>
+              <p>{{bar.address}} {{bar.zip_code}}</p>
+
+            </ion-item>
+          </ion-list>
+
+          <p>
+            <a href="#" class="subdued">0 Like</a>
+            <a href="#" class="subdued">0 Comments</a>
+          </p>
+
+          <div class="item tabs tabs-secondary tabs-icon-left">
+            <a class="tab-item" href="#1">
+              <i class="icon ion-thumbsup"></i>
+              Like
+            </a>
+            <a class="tab-item" href="#2">
+              <i class="icon ion-chatbox"></i>
+              Comment
+            </a>
+            <a class="tab-item" href="#3">
+              <i class="icon ion-share"></i>
+              Share
+           </a>
+          </div>
+
+        </ion-content>
+      </ion-view>
     </script>
 
 

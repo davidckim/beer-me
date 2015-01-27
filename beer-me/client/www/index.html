@@ -27,22 +27,14 @@
     <ion-nav-view></ion-nav-view>
 
     <script id="templates/home.html" type="text/ng-template">
-      <ion-view view-title="Home">
-        <ion-content class="padding">
-          <p>
-            <a class="button" ng-click="getLocation()">FIND BEERS NEAR ME</a>
+      <ion-view view-title="Landing Page" class="landing-page">
+        <button class="find-beer button" ng-click="getLocation()">
+          Find Beer Near Me
+        </button> 
 
-            <form ng-submit="getBeersByZipCode()">
-              <label class="item item-input">
-                <input type="text" placeholder="Enter Zipcode" ng-model="data.zipCode">
-              </label>
-              <div class="padding">
-                <button type="submit" class="button button-block button-energized">Submit Zipcode</button>
-               </div>
-           </form>
-
-          </p>
-        </ion-content>
+        <button class="zipcode-beer button" ng-click="zipcodePop()">
+          Find Beer by Zipcode
+        </button>
       </ion-view>
     </script>
 
