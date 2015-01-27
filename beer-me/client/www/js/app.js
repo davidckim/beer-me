@@ -88,15 +88,15 @@ app.service('MapService', function($q) {
 
 app.service('BeerService', function($http, MapService) {
   var beers = "";
+
   return {
     showBeers: function() {
       return beers
     },
-    getBeersList: function() {
+    getBeersList: function(zipcode) {
       console.log("im in the service beers")
-      return $http.get("https://b33r-me.herokuapp.com/beers/"+MapService.zip).done(function(data) {
-        beers = data
-        console.log(beers)
+      return $http.get("https://b33r-me.herokuapp.com/beers/"+zipcode).success(function(data) {
+        return data
       })
     }
   }
@@ -105,23 +105,27 @@ app.service('BeerService', function($http, MapService) {
 
 app.controller("MapCtrl", function($scope, $http, $ionicLoading, MapService, BeerService) {
 
+  $scope.data = {};
   $scope.zipCode = "";
   $scope.beers = "";
+
+  $scope.getBeersByZipCode = function() {
+    BeerService.getBeersList($scope.data.zipCode).then(function(response) {
+      $scope.beers = response.data
+      console.log($scope.beers)
+    })
+  }
   
   $scope.getLocation = function() {
     MapService.getLocation().then(MapService.showPosition).then(function(data) {
       $scope.zipCode = data;
-      BeerService.getBeersList();
+      BeerService.getBeersList($scope.zipCode).then(function(response) {
+        $scope.beers = response.data
+        console.log($scope.beers)
+      })
     })
   };
 
-  $scope.getBeersList = function() {
-    console.log("beers list")
-    BeerService.showBeers().then(function(data) {
-      console.log(data)
-      $scope.beers = data
-    })
-  }
 
 });
 
