@@ -86,15 +86,17 @@ app.service('MapService', function($q) {
 })
 
 
-app.service('BeerService', function(MapService) {
+app.service('BeerService', function($http, MapService) {
   var beers = "";
   return {
     showBeers: function() {
       return beers
     },
     getBeersList: function() {
+      console.log("im in the service beers")
       return $http.get("https://b33r-me.herokuapp.com/beers/"+MapService.zip).done(function(data) {
         beers = data
+        console.log(beers)
       })
     }
   }
@@ -108,12 +110,13 @@ app.controller("MapCtrl", function($scope, $http, $ionicLoading, MapService, Bee
   
   $scope.getLocation = function() {
     MapService.getLocation().then(MapService.showPosition).then(function(data) {
-      console.log(data)
-      $scope.zipCode = data
+      $scope.zipCode = data;
+      BeerService.getBeersList();
     })
   };
 
   $scope.getBeersList = function() {
+    console.log("beers list")
     BeerService.showBeers().then(function(data) {
       console.log(data)
       $scope.beers = data
