@@ -103,25 +103,47 @@ app.service('BeerService', function($http, MapService) {
 })
 
 
-app.controller("MapCtrl", function($scope, $http, $ionicLoading, MapService, BeerService) {
+app.controller("MapCtrl", function($scope, $http, $ionicLoading, $state, MapService, BeerService) {
 
   $scope.data = {};
   $scope.zipCode = "";
   $scope.beers = "";
+  $scope.beerObject = "";
+  $scope.beerBars = "";
+
+  $scope.showBeerPage = function(beerObj) {
+    $scope.beerObject = beerObj
+    $scope.beerBars = beerObj.locations
+    console.log($scope.beerObject)
+    console.log($scope.beerBars)
+    $state.go('beer');
+  }
 
   $scope.getBeersByZipCode = function() {
+    $ionicLoading.show({
+      template: 'Finding Beers Near You.....'
+    });
     BeerService.getBeersList($scope.data.zipCode).then(function(response) {
       $scope.beers = response.data
       console.log($scope.beers)
+      $ionicLoading.hide();
+      $state.go('beers');
     })
   }
   
   $scope.getLocation = function() {
+
+  $ionicLoading.show({
+      template: 'Finding Beers Near You.....'
+    });
+
     MapService.getLocation().then(MapService.showPosition).then(function(data) {
       $scope.zipCode = data;
       BeerService.getBeersList($scope.zipCode).then(function(response) {
         $scope.beers = response.data
         console.log($scope.beers)
+        $ionicLoading.hide();
+        $state.go('beers');
       })
     })
   };

@@ -30,10 +30,9 @@
       <ion-view view-title="Home">
         <ion-content class="padding">
           <p>
-            <a class="button" ng-click="getLocation()">Beers Near Me</a>
-            <a class="button" ui-sref="beers">See List of Beers</a>
+            <a class="button" ng-click="getLocation()">FIND BEERS NEAR ME</a>
 
-            <form ng-submit="getBeersByZipCode()" ui-sref="beers">
+            <form ng-submit="getBeersByZipCode()">
               <label class="item item-input">
                 <input type="text" placeholder="Enter Zipcode" ng-model="data.zipCode">
               </label>
@@ -49,7 +48,7 @@
 
     <script id="templates/beers.html" type="text/ng-template">
 
-      <ion-view view-title="Beers on Tap Near You">
+      <ion-view view-title="Beers">
         <ion-nav-bar class="bar-energized">
           <ion-nav-back-button class="button-icon ion-arrow-left-c">
           </ion-nav-back-button>
@@ -69,8 +68,10 @@
           </div>
 
           <ion-list>
-            <ion-item ng-repeat="beer in beers | filter: data.searchQuery" class="item item-button-right" href="#/beers/beer">
+            <ion-item ng-repeat="beer in beers | filter: data.searchQuery" class="item item-button-right" ng-click="showBeerPage({{beer}})">
+
               {{beer.name}}
+
             </ion-item>
           </ion-list>
         </ion-content>
@@ -78,8 +79,28 @@
 
     </script>
 
-    <script id="templates/beer.html" type="text/ng-template">
-      <h1>Hello World</h1>
+    <script id="templates/beer.html" type="text/ng-template" ng-controller="MapCtrl as beerObject">
+      <ion-view view-title="{{beerObject.name}}">
+        <ion-nav-bar class="bar-energized">
+          <ion-nav-back-button class="button-icon ion-arrow-left-c">
+          </ion-nav-back-button>
+        </ion-nav-bar>
+        <ion-content class="padding">
+          <h1>{{beerObject.name}}</h1>
+          <h2>{{beerObject.price}}</h2>
+          <h2>{{beerObject.abv}}</h2>
+          <h2>{{beerObject.rating}}</h2>
+
+          <ion-list>
+            <ion-item ng-repeat="bar in beerBars" class="item item-button-right" >
+              <p>{{bar.name}}</p>
+              <p>{{bar.address}} {{bar.zip_code}}</p>
+
+            </ion-item>
+          </ion-list>
+
+        </ion-content>
+      </ion-view>
     </script>
 
 

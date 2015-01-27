@@ -46,7 +46,13 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
 app.service('MapService', function($q) {
 
+  var zip = "";
+
   return {
+
+    showZipCode: function() {
+      return zip
+    },
 
     getLocation: function() {
       console.log("first")
@@ -63,7 +69,6 @@ app.service('MapService', function($q) {
 
     showPosition: function(position) {
       console.log("finding zipcode.....")
-      var zip;
       var deferred = $q.defer();
 
       var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -81,37 +86,58 @@ app.service('MapService', function($q) {
 })
 
 
-app.service('BeerService', function(MapCtrl, MapService) {
+app.service('BeerService', function($http, MapService) {
   var beers = "";
+
   return {
     showBeers: function() {
       return beers
     },
-    getBeersList: function() {
-      return $http.get("https://b33r-me.herokuapp.com/beers/"+MapCtrl.zipCode).done(function(data) {
-        beers = data
+    getBeersList: function(zipcode) {
+      console.log("im in the service beers")
+      return $http.get("https://b33r-me.herokuapp.com/beers/"+zipcode).success(function(data) {
+        return data
       })
     }
   }
 })
 
 
-app.controller("MapCtrl", function($scope, $http, $ionicLoading, MapService, BeerService) {
+app.controller("MapCtrl", function($scope, $http, $ionicLoading, $state, MapService, BeerService) {
 
+  $scope.data = {};
   $scope.zipCode = "";
   $scope.beers = "";
+
+  $scope.getBeersByZipCode = function() {
+    $ionicLoading.show({
+      template: 'Finding Beers Near You.....'
+    });
+    BeerService.getBeersList($scope.data.zipCode).then(function(response) {
+      $scope.beers = response.data
+      console.log($scope.beers)
+      $ionicLoading.hide();
+      $state.go('beers');
+    })
+  }
   
   $scope.getLocation = function() {
+
+  $ionicLoading.show({
+      template: 'Finding Beers Near You.....'
+    });
+
     MapService.getLocation().then(MapService.showPosition).then(function(data) {
-      $scope.zipCode = data
+      $scope.zipCode = data;
+      BeerService.getBeersList($scope.zipCode).then(function(response) {
+        $scope.beers = response.data
+        console.log($scope.beers)
+        $ionicLoading.hide();
+        $state.go('beers');
+      })
     })
   };
 
-  $scope.getBeersList = function() {
-    BeerService.showBeers().then(function(data) {
-      $scope.beers = data
-    })
-  }
 
 });
 
