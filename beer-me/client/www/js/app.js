@@ -14,7 +14,8 @@ app.run(function($ionicPlatform) {
   });
 })
 
-app.config(function($stateProvider, $urlRouterProvider) {
+app.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+  $ionicConfigProvider.backButton.text('').icon('ion-ios7-arrow-left');
 
   $stateProvider
     .state('home', {
@@ -37,12 +38,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'templates/about.html'
     })
 
-    .state('tabs', {
-      url: "/tab",
-      abstract: true,
-      templateUrl: "templates/tabs.html"
-    })
-
   $urlRouterProvider.otherwise("/");
 
 })
@@ -60,7 +55,6 @@ app.service('MapService', function($q) {
     },
 
     getLocation: function() {
-      console.log("first")
       var deferred = $q.defer();
 
       navigator.geolocation.getCurrentPosition(function(data) {
@@ -73,7 +67,6 @@ app.service('MapService', function($q) {
     },
 
     showPosition: function(position) {
-      console.log("finding zipcode.....")
       var deferred = $q.defer();
 
       var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -85,7 +78,7 @@ app.service('MapService', function($q) {
     },
 
     failedReturn: function() {
-      console.log("Failed to return current location")
+      return "Failed to return current location"
     }
   }
 })
@@ -99,7 +92,6 @@ app.service('BeerService', function($http, MapService) {
       return beers
     },
     getBeersList: function(zipcode) {
-      console.log("im in the service beers")
       return $http.get("https://b33r-me.herokuapp.com/beers/"+zipcode).success(function(data) {
         return data
       })
@@ -119,8 +111,6 @@ app.controller("MapCtrl", function($scope, $http, $ionicLoading, $state, $ionicP
   $scope.showBeerPage = function(beerObj) {
     $scope.beerObject = beerObj
     $scope.beerBars = beerObj.locations
-    console.log($scope.beerObject)
-    console.log($scope.beerBars)
     $state.go('beer');
   }
 
@@ -131,7 +121,6 @@ app.controller("MapCtrl", function($scope, $http, $ionicLoading, $state, $ionicP
 
     BeerService.getBeersList($scope.data.zipCode).then(function(response) {
       $scope.beers = response.data
-      console.log($scope.beers)
       $ionicLoading.hide();
       $state.go('beers');
     })
@@ -144,10 +133,8 @@ app.controller("MapCtrl", function($scope, $http, $ionicLoading, $state, $ionicP
 
     MapService.getLocation().then(MapService.showPosition).then(function(data) {
       $scope.zipCode = data;
-      console.log(data)
       BeerService.getBeersList($scope.zipCode).then(function(response) {
         $scope.beers = response.data
-        console.log($scope.beers)
         $ionicLoading.hide();
         $state.go('beers');
       })
@@ -168,12 +155,6 @@ app.controller("MapCtrl", function($scope, $http, $ionicLoading, $state, $ionicP
       ]
     })
   }
-
-  $scope.selectMe = function(event) {
-    $(event.target).addClass('button-opacity')
-  }
-
-
 
 });
 

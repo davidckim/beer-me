@@ -26,7 +26,7 @@
             <div class="item item-divider beer-list-title">
               <b>Beers on tap in {{zipCode}}</b>
             </div>
-            <ion-item ng-repeat="beer in beers | filter: data.searchQuery" class="item item-thumbnail-left" ng-click="showBeerPage({{beer}})">
+            <ion-item ng-repeat="beer in beers | filter: data.searchQuery" class="item item-avatar" ng-click="showBeerPage({{beer}})">
               <img src="{{beer.image}}" >
               <h3>{{beer.name}}</h3>
               <p>Rarity: {{beer.rank}}</p>
