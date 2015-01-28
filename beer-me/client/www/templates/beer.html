@@ -1,0 +1,46 @@
+      
+      <ion-view view-title='<img src="http://i.imgur.com/ivXdRk4.png">  <img src="http://i.imgur.com/syjOJN2.png">'>
+        <ion-nav-bar class="bar-energized">
+          <ion-nav-back-button class="button-icon ion-arrow-left-c">
+          </ion-nav-back-button>
+          <ion-nav-buttons side="right">
+            <a ui-sref='about' class="button button-icon icon ion-information-circled"></a>
+          </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="padding">
+
+          <div class="list card">
+            <div class="item item-thumbnail-left">
+              <img src="{{beerObject.image}}">
+              <h2>{{beerObject.name}}</h2>
+              <p>Rating: {{beerObject.rating}}/100</p>
+            </div>
+
+            <div class="item item-body">
+              <div class="card">
+                <div class="item item-text-wrap">
+                  <p>Info Card</p>
+                  <h1>{{beerObject.price}}</h1>
+                  <h2>{{beerObject.abv}}</h2>
+                </div>
+               </div>
+                <p>{{beerObject.description}}
+                </p>
+            </div>
+
+          <ion-list>
+            <div class="item item-divider beer-list-title">
+              <b>Served at:</b>
+            </div>
+            <ion-item ng-repeat="bar in beerBars" class="item item-button-right" ng-href="http://maps.google.com/maps?daddr={{bar.address}}+CA">
+
+              <p>{{bar.name}}</p>
+              <p>{{bar.address}} {{bar.zip_code}}</p>
+
+            </ion-item>
+          </ion-list>
+
+          </div>
+
+        </ion-content>
+      </ion-view>

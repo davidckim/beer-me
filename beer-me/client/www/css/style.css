@@ -1,1 +1,39 @@
-/* Empty. Add your own CSS if you like */
+.landing-page {
+  background-image: url('../img/beermebar.png');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  background-color: #000000;
+  width: 400px;
+  text-align: center;
+  margin: auto;
+  max-height: 640px;
+}
+
+.bar-button {
+  position: absolute;
+  width: 305px;
+  left: 57px;
+  top: 50px;
+}
+
+.button-opacity {
+  opacity: 0.6;
+}
+
+.find-beer {
+  font-weight: bold;
+  color: black;
+  background: rgba(255,255,255,0.6);
+  margin-top: 270px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.zipcode-beer {
+  font-weight: bold;
+  color: white;
+  background: rgba(255,255,255,0.0);
+  margin-top: 290px;
+}
+

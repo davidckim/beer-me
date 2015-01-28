@@ -14,7 +14,8 @@ app.run(function($ionicPlatform) {
   });
 })
 
-app.config(function($stateProvider, $urlRouterProvider) {
+app.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+  $ionicConfigProvider.backButton.text('').icon('ion-ios7-arrow-left');
 
   $stateProvider
     .state('home', {
@@ -32,10 +33,9 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: "templates/beer.html",
     })
 
-    .state('tabs', {
-      url: "/tab",
-      abstract: true,
-      templateUrl: "templates/tabs.html"
+    .state('about', {
+      url: '/about',
+      templateUrl: 'templates/about.html'
     })
 
   $urlRouterProvider.otherwise("/");
@@ -55,20 +55,18 @@ app.service('MapService', function($q) {
     },
 
     getLocation: function() {
-      console.log("first")
       var deferred = $q.defer();
 
       navigator.geolocation.getCurrentPosition(function(data) {
         deferred.resolve(data)
       }, function(err) {
         deferred.reject(err)
-      })
+      }, { enableHighAccuracy: true })
 
       return deferred.promise;
     },
 
     showPosition: function(position) {
-      console.log("finding zipcode.....")
       var deferred = $q.defer();
 
       var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -80,43 +78,81 @@ app.service('MapService', function($q) {
     },
 
     failedReturn: function() {
-      console.log("Failed to return current location")
+      return "Failed to return current location"
     }
   }
 })
 
 
-app.service('BeerService', function(MapService) {
+app.service('BeerService', function($http, MapService) {
   var beers = "";
+
   return {
     showBeers: function() {
       return beers
     },
-    getBeersList: function() {
-      return $http.get("https://b33r-me.herokuapp.com/beers/"+MapService.zip).done(function(data) {
-        beers = data
+    getBeersList: function(zipcode) {
+      return $http.get("https://b33r-me.herokuapp.com/beers/"+zipcode).success(function(data) {
+        return data
       })
     }
   }
 })
 
 
-app.controller("MapCtrl", function($scope, $http, $ionicLoading, MapService, BeerService) {
+app.controller("MapCtrl", function($scope, $http, $ionicLoading, $state, $ionicPopup, MapService, BeerService) {
 
+  $scope.data = {};
   $scope.zipCode = "";
   $scope.beers = "";
+  $scope.beerObject = "";
+  $scope.beerBars = "";
+
+  $scope.showBeerPage = function(beerObj) {
+    $scope.beerObject = beerObj
+    $scope.beerBars = beerObj.locations
+    $state.go('beer');
+  }
+
+  $scope.getBeersByZipCode = function() {
+    $ionicLoading.show({
+      template: '<div style="width: 100%; background-color: #E8BD1B "><img src="http://i.imgur.com/4GFDgbe.gif" width="100%" style="margin-top: 50%; margin-bottom: 50%"></div>'
+    });
+
+    BeerService.getBeersList($scope.data.zipCode).then(function(response) {
+      $scope.beers = response.data
+      $ionicLoading.hide();
+      $state.go('beers');
+    })
+  }
   
   $scope.getLocation = function() {
+    $ionicLoading.show({
+        template: '<div style="width: 100%; background-color: #E8BD1B "><img src="http://i.imgur.com/4GFDgbe.gif" width="100%" style="margin-top: 50%; margin-bottom: 50%"></div>'
+    });
+
     MapService.getLocation().then(MapService.showPosition).then(function(data) {
-      console.log(data)
-      $scope.zipCode = data
+      $scope.zipCode = data;
+      BeerService.getBeersList($scope.zipCode).then(function(response) {
+        $scope.beers = response.data
+        $ionicLoading.hide();
+        $state.go('beers');
+      })
     })
   };
 
-  $scope.getBeersList = function() {
-    BeerService.showBeers().then(function(data) {
-      console.log(data)
-      $scope.beers = data
+  $scope.zipcodePop = function() {
+    $ionicPopup.show({
+      template: '<input type="text" ng-model="data.zipCode" maxlength="5">',
+      title: 'Please enter a zipcode',
+      scope: $scope,
+      buttons: [
+        { text: 'Cancel' },
+        { text: '<b>Submit</b>',
+          type: 'button-energized',
+          onTap: $scope.getBeersByZipCode
+        }
+      ]
     })
   }
 

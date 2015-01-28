@@ -1,0 +1,43 @@
+
+      <ion-view view-title='<img src="http://i.imgur.com/ivXdRk4.png">  <img src="http://i.imgur.com/syjOJN2.png">'>
+        <ion-nav-bar class="bar-energized">
+          <ion-nav-back-button class="button-icon ion-arrow-left-c">
+          </ion-nav-back-button>
+          <ion-nav-buttons side="right">
+            <a ui-sref='about' class="button button-icon icon ion-information-circled"></a>
+          </ion-nav-buttons> 
+        </ion-nav-bar>
+
+        <ion-content class="padding"
+             start-y="55"
+             padding="false"
+             has-tabs="true"
+             has-header="true">
+
+        <div ng-if='beers != 0' style=''>
+          <div id="search-box" class="bar bar-header item-input-inset">
+            <div class="item-input-wrapper">
+              <i class="icon ion-ios7-search placeholder-icon"></i>
+              <input type="search" placeholder="Search for a Beer" ng-model="data.searchQuery">
+            </div>
+          </div>
+
+          <ion-list>
+            <div class="item item-divider beer-list-title">
+              <b>Beers on tap in {{zipCode}}</b>
+            </div>
+            <ion-item ng-repeat="beer in beers | filter: data.searchQuery" class="item item-avatar" ng-click="showBeerPage({{beer}})">
+              <img src="{{beer.image}}" >
+              <h3>{{beer.name}}</h3>
+              <p>Rarity: {{beer.rank}}</p>
+            </ion-item>
+          </ion-list>
+        </div>
+
+        <div ng-if='beers.length == 0'>
+          <h1><b>Sorry!</b></h1>
+          <h4>We currently do not have any listed beers for that location! Please press back and try a different zipcode. Thank you</h4>
+        </div>
+
+        </ion-content>
+      </ion-view>

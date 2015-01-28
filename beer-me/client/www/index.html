@@ -22,85 +22,8 @@
   </head>
 
 
-  <body ng-controller="MapCtrl"> 
-
+  <body ng-controller="MapCtrl">
     <ion-nav-view></ion-nav-view>
-
-    <script id="templates/home.html" type="text/ng-template">
-      <ion-view view-title="Home">
-        <ion-content class="padding">
-          <p>
-            <a class="button" ng-click="getBeersList()">Beers Near Me</a>
-            <a class="button" ui-sref="beers">See List of Beers</a>
-
-            <form ng-submit="" ui-sref="beers">
-              <label class="item item-input">
-                <input type="text" placeholder="Enter Zipcode" ng-model="data.zipCode">
-              </label>
-              <div class="padding">
-                <button type="submit" class="button button-block button-energized">Submit Zipcode</button>
-               </div>
-           </form>
-
-          </p>
-        </ion-content>
-      </ion-view>
-    </script>
-
-    <script id="templates/beers.html" type="text/ng-template">
-
-      <ion-view view-title="Beers on Tap Near You">
-        <ion-nav-bar class="bar-energized">
-          <ion-nav-back-button class="button-icon ion-arrow-left-c">
-          </ion-nav-back-button>
-        </ion-nav-bar>
-
-        <ion-content class="padding"
-             start-y="55"
-             padding="false"
-             has-tabs="true"
-             has-header="true">
-
-          <div id="search-box" class="bar bar-header item-input-inset">
-            <div class="item-input-wrapper">
-              <i class="icon ion-ios7-search placeholder-icon"></i>
-              <input type="search" placeholder="Search for a Beer" ng-model="data.searchQuery">
-            </div>
-          </div>
-
-          <ion-list>
-            <ion-item ng-repeat="beer in beers | filter: data.searchQuery" class="item item-button-right" href="#/beers/beer">
-              {{beer.name}}
-            </ion-item>
-          </ion-list>
-        </ion-content>
-      </ion-view>
-
-    </script>
-
-    <script id="templates/beer.html" type="text/ng-template">
-      <h1>Hello World</h1>
-    </script>
-
-
-    <script id="templates/tabs.html" type="text/ng-template">
-      <ion-tabs class="tabs-icon-top tabs-positive">
-
-        <ion-tab title="Home" icon="ion-home" href="#/tab/home">
-          <ion-nav-view name="home-tab"></ion-nav-view>
-        </ion-tab>
-
-        <ion-tab title="About" icon="ion-person" ui-sref="tabs.contact">
-          <ion-nav-view name="about-tab"></ion-nav-view>
-        </ion-tab>
-
-        <ion-tab title="Contact" icon="ion-at" ui-sref="tabs.contact">
-          <ion-nav-view name="contact-tab"></ion-nav-view>
-        </ion-tab>
-
-      </ion-tabs>
-    </script>
-
   </body>
 
 

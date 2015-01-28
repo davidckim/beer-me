@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.ionicframework.client728278" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>client</name>
+  <name>BeerMe</name>
   <description>
-        An Ionic Framework and Cordova project.
+        Final Projet For DBC
     </description>
-  <author email="hi@ionicframework" href="http://ionicframework.com/">
-      Ionic Framework Team
+  <author email="davidckim320@gmail.com" href="http://davidc.kim">
+      Tina, Stephen, Sean, David
     </author>
   <content src="index.html"/>
   <access origin="*"/>
@@ -17,5 +17,17 @@
   <preference name="SplashScreenDelay" value="3000" />
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
+  </feature>
+  <feature name="Geolocation">
+    <param name="android-package" value="org.apache.cordova.GeoBroker" />
+  </feature>
+  <feature name="Geolocation">
+    <param name="ios-package" value="CDVLocation" />
+  </feature>
+  <feature name="File">
+    <param name="android-package" value="org.apache.cordova.FileUtils" />
+  </feature>
+  <feature name="FileTransfer">
+    <param name="android-package" value="org.apache.cordova.FileTransfer" />
   </feature>
 </widget>
