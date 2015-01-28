@@ -30,3 +30,13 @@
 2015-01-26 18:23:12.150 client[96627:1381357] im in the service beers
 2015-01-26 18:23:12.609 client[96627:1381357] []
 2015-01-26 18:23:18.163 client[96627:1381357] first
+2015-01-27 12:29:51.970 client[26130:1666031] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/davidkim/Library/Developer/CoreSimulator/Devices/D364B945-528D-4D3A-AA7F-E523E309902E/data/Containers/Data/Application/B2D24CD2-563B-4759-ADE9-17269A9BF8D3/Library/Cookies/Cookies.binarycookies
+2015-01-27 12:29:52.261 client[26130:1666031] Apache Cordova native platform version 3.7.0 is starting.
+2015-01-27 12:29:52.262 client[26130:1666031] Multi-tasking -> Device: YES, App: YES
+2015-01-27 12:29:52.278 client[26130:1666031] Unlimited access to network resources
+2015-01-27 12:29:52.792 client[26130:1666031] [CDVTimer][keyboard] 0.057995ms
+2015-01-27 12:29:53.003 client[26130:1666031] [CDVTimer][splashscreen] 210.561037ms
+2015-01-27 12:29:53.003 client[26130:1666031] [CDVTimer][TotalPluginStartup] 210.927963ms
+2015-01-27 12:29:53.203 client[26130:1666031] Resetting plugins due to page load.
+2015-01-27 12:29:53.650 client[26130:1666031] Finished load of: file:///Users/davidkim/Library/Developer/CoreSimulator/Devices/D364B945-528D-4D3A-AA7F-E523E309902E/data/Containers/Bundle/Application/94EEFEDB-691E-45B2-8375-ED1145DBD5C8/client.app/www/index.html#/
+2015-01-27 12:29:57.872 client[26130:1666031] first

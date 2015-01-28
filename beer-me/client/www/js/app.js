@@ -32,6 +32,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: "templates/beer.html",
     })
 
+    .state('about', {
+      url: '/about',
+      templateUrl: 'templates/about.html'
+    })
+
     .state('tabs', {
       url: "/tab",
       abstract: true,
@@ -121,7 +126,7 @@ app.controller("MapCtrl", function($scope, $http, $ionicLoading, $state, $ionicP
 
   $scope.getBeersByZipCode = function() {
     $ionicLoading.show({
-      template: '<div style="width: 100%; background-color: #ecba11 "><img src="../img/beerLoading.gif" width="100%" style="margin-top: 50%; margin-bottom: 50%"></div>'
+      template: '<div style="width: 100%; background-color: #E8BD1B "><img src="../img/beerLoading.gif" width="100%" style="margin-top: 50%; margin-bottom: 50%"></div>'
     });
 
     BeerService.getBeersList($scope.data.zipCode).then(function(response) {
@@ -134,11 +139,12 @@ app.controller("MapCtrl", function($scope, $http, $ionicLoading, $state, $ionicP
   
   $scope.getLocation = function() {
     $ionicLoading.show({
-        template: '<div style="width: 100%; background-color: #ecba11 "><img src="../img/beerLoading.gif" width="100%" style="margin-top: 50%; margin-bottom: 50%"></div>'
+        template: '<div style="width: 100%; background-color: #E8BD1B "><img src="../img/beerLoading.gif" width="100%" style="margin-top: 50%; margin-bottom: 50%"></div>'
     });
 
     MapService.getLocation().then(MapService.showPosition).then(function(data) {
       $scope.zipCode = data;
+      console.log(data)
       BeerService.getBeersList($scope.zipCode).then(function(response) {
         $scope.beers = response.data
         console.log($scope.beers)
@@ -150,7 +156,7 @@ app.controller("MapCtrl", function($scope, $http, $ionicLoading, $state, $ionicP
 
   $scope.zipcodePop = function() {
     $ionicPopup.show({
-      template: '<input type="text" ng-model="data.zipCode">',
+      template: '<input type="text" ng-model="data.zipCode" maxlength="5">',
       title: 'Please enter a zipcode',
       scope: $scope,
       buttons: [
@@ -161,6 +167,10 @@ app.controller("MapCtrl", function($scope, $http, $ionicLoading, $state, $ionicP
         }
       ]
     })
+  }
+
+  $scope.selectMe = function(event) {
+    $(event.target).addClass('button-opacity')
   }
 
 

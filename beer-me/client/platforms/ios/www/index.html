@@ -22,28 +22,30 @@
   </head>
 
 
-  <body ng-controller="MapCtrl" class="platform-ios platform-cordova platform-webview"> 
+  <body ng-controller="MapCtrl" class="platform-ios platform-cordova platform-webview">
 
     <ion-nav-view></ion-nav-view>
 
     <script id="templates/home.html" type="text/ng-template">
-      <ion-view view-title="Landing Page" class="landing-page">
-        <button class="find-beer button" ng-click="getLocation()">
-          Find Beer Near Me
-        </button> 
-
-        <button class="zipcode-beer button" ng-click="zipcodePop()">
-          Find Beer by Zipcode
-        </button>
+      <ion-view view-title="Landing Page">
+        <ion-content class="landing-page">
+          <img ng-click='getLocation()' class="bar-button" src="../img/beerMeCoaster.jpg">
+          <button class="zipcode-beer button" ng-click="zipcodePop()">
+            Find Beer by Zipcode
+          </button>
+        </ion-content>
       </ion-view>
     </script>
 
     <script id="templates/beers.html" type="text/ng-template">
 
-      <ion-view view-title="Beers">
+      <ion-view view-title='<img src="../img/beermepic.png">  <img src="../img/beermetext.png">'>
         <ion-nav-bar class="bar-energized">
           <ion-nav-back-button class="button-icon ion-arrow-left-c">
           </ion-nav-back-button>
+          <ion-nav-buttons side="right">
+            <a class="button button-icon icon ion-information-circled"></a>
+          </ion-nav-buttons> 
         </ion-nav-bar>
 
         <ion-content class="padding"
@@ -52,6 +54,7 @@
              has-tabs="true"
              has-header="true">
 
+        <div ng-if='beers != 0'>
           <div id="search-box" class="bar bar-header item-input-inset">
             <div class="item-input-wrapper">
               <i class="icon ion-ios7-search placeholder-icon"></i>
@@ -60,12 +63,22 @@
           </div>
 
           <ion-list>
+            <div class="item item-divider beer-list-title">
+              <b>Beers on tap in {{zipCode}}</b>
+            </div>
             <ion-item ng-repeat="beer in beers | filter: data.searchQuery" class="item item-thumbnail-left" ng-click="showBeerPage({{beer}})">
-              <img src="{{beer.image}}">
-              {{beer.name}}
-
+              <img src="{{beer.image}}" >
+              <h3>{{beer.name}}</h3>
+              <p>Rarity: {{beer.rank}}</p>
             </ion-item>
           </ion-list>
+        </div>
+
+        <div ng-if='beers.length == 0'>
+          <h2><b>Sorry!</b></h2>
+          <p>We currently do not have any listed beers for that location! Please press back and try a different zipcode. Thank you</p>
+        </div>
+
         </ion-content>
       </ion-view>
 
@@ -73,7 +86,7 @@
 
     <script id="templates/beer.html" type="text/ng-template" ng-controller="MapCtrl as beerObject">
       
-      <ion-view view-title="{{beerObject.name}}">
+      <ion-view view-title='<img src="../img/beermepic.png">  <img src="../img/beermetext.png">'>
         <ion-nav-bar class="bar-energized">
           <ion-nav-back-button class="button-icon ion-arrow-left-c">
           </ion-nav-back-button>
@@ -84,16 +97,25 @@
             <div class="item item-avatar">
               <img src="{{beerObject.image}}">
               <h2>{{beerObject.name}}</h2>
-              <p>{{beerObject.price}}</p>
+              <p>Rating: {{beerObject.rating}}/100</p>
             </div>
 
-          <div class="item item-body">
-            <h2>Beer ABV: {{beerObject.abv}}</h2>
-            <h2>Beer Rating: {{beerObject.rating}}</h2>
-          </div>
+            <div class="item item-body">
+              <img class="full-image" src="{{beerObject.image}}">
+              <div class="card">
+                <div class="item item-text-wrap">
+                  <p>{{beerObject.price}}</p>
+                  <p>{{beerObject.abv}}</p>
+                </div>
+               </div>
+                <p>Nulla facilisi. Maecenas ultricies enim ligula, a rutrum dui suscipit at. Fusce pellentesque posuere hendrerit. In volutpat quam a massa tincidunt, et dignissim leo vulputate. Donec pellentesque lorem eget condimentum pulvinar. Aenean leo tellus, iaculis ac vulputate non, hendrerit ac dui. Vestibulum ac malesuada nisi, sed sagittis erat. Proin ullamcorper arcu id ex molestie aliquet. Morbi faucibus nibh id lacus feugiat tincidunt. Aliquam consectetur porta euismod. Morbi diam turpis, elementum eu velit ut, consequat luctus urna.
+                </p>
+            </div>
 
           <ion-list>
-          <h3>Bars w/ This Tap</h3>
+            <div class="item item-divider beer-list-title">
+              <b>Served at:</b>
+            </div>
             <ion-item ng-repeat="bar in beerBars" class="item item-button-right" >
 
               <p>{{bar.name}}</p>
@@ -102,30 +124,11 @@
             </ion-item>
           </ion-list>
 
-          <p>
-            <a href="#" class="subdued">0 Like</a>
-            <a href="#" class="subdued">0 Comments</a>
-          </p>
-
-          <div class="item tabs tabs-secondary tabs-icon-left">
-            <a class="tab-item" href="#1">
-              <i class="icon ion-thumbsup"></i>
-              Like
-            </a>
-            <a class="tab-item" href="#2">
-              <i class="icon ion-chatbox"></i>
-              Comment
-            </a>
-            <a class="tab-item" href="#3">
-              <i class="icon ion-share"></i>
-              Share
-           </a>
           </div>
 
         </ion-content>
       </ion-view>
     </script>
-
 
     <script id="templates/tabs.html" type="text/ng-template">
       <ion-tabs class="tabs-icon-top tabs-positive">
