@@ -116,7 +116,7 @@ app.controller("MapCtrl", function($scope, $http, $ionicLoading, $state, $ionicP
 
   $scope.getBeersByZipCode = function() {
     $ionicLoading.show({
-      template: '<div style="width: 100%; background-color: #E8BD1B "><img src="../img/beerLoading.gif" width="100%" style="margin-top: 50%; margin-bottom: 50%"></div>'
+      template: '<div style="width: 100%; background-color: #E8BD1B "><img src="http://i.imgur.com/4GFDgbe.gif" width="100%" style="margin-top: 50%; margin-bottom: 50%"></div>'
     });
 
     BeerService.getBeersList($scope.data.zipCode).then(function(response) {
@@ -128,7 +128,7 @@ app.controller("MapCtrl", function($scope, $http, $ionicLoading, $state, $ionicP
   
   $scope.getLocation = function() {
     $ionicLoading.show({
-        template: '<div style="width: 100%; background-color: #E8BD1B "><img src="../img/beerLoading.gif" width="100%" style="margin-top: 50%; margin-bottom: 50%"></div>'
+        template: '<div style="width: 100%; background-color: #E8BD1B "><img src="http://i.imgur.com/4GFDgbe.gif" width="100%" style="margin-top: 50%; margin-bottom: 50%"></div>'
     });
 
     MapService.getLocation().then(MapService.showPosition).then(function(data) {
