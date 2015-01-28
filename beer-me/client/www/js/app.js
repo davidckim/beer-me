@@ -67,7 +67,7 @@ app.service('MapService', function($q) {
         deferred.resolve(data)
       }, function(err) {
         deferred.reject(err)
-      })
+      }, { enableHighAccuracy: true })
 
       return deferred.promise;
     },
