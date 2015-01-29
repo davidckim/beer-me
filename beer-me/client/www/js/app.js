@@ -20,12 +20,6 @@ app.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $c
 
   $stateProvider
   
-    .state('tabs', {
-      url: "/tab",
-      abstract: true,
-      templateUrl: "templates/tabs.html"
-    })
-
     .state('home', {
       url: '/',
       templateUrl: "templates/home.html"
