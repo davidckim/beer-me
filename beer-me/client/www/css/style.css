@@ -1,5 +1,5 @@
 .landing-page {
-  background-image: url('../img/beermebar.png');
+  background-image: url('../img/beerglass.png');
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -21,20 +21,36 @@
   opacity: 0.6;
 }
 
+.beerme-white {
+  position: absolute;
+  top: 20px;
+  left: 50px;
+}
+
 .find-beer {
+  top: -80px;
+  left: 30px;
+  position: absolute;
   font-weight: bold;
   color: black;
-  background: rgba(255,255,255,0.6);
-  margin-top: 270px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  font-family: Roboto;
+  background: rgba(255,177,0,0.4);
+  margin-top: 290px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .zipcode-beer {
+  top: 10px;
+  left: 30px;
+  position: absolute;
   font-weight: bold;
-  color: white;
-  background: rgba(255,255,255,0.0);
+  color: black;
+  font-family: Roboto;
+  background: rgba(255,255,255,0.4);
   margin-top: 290px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .roboto-font {
@@ -60,7 +76,6 @@
   border-radius: 32px;
   margin-bottom: 5px;
 }
-
 
 
 
