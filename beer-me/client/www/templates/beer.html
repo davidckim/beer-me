@@ -32,7 +32,7 @@
             <div class="item item-divider beer-list-title">
               <b>Served at:</b>
             </div>
-            <ion-item ng-repeat="bar in beerBars" class="item item-button-right" ng-href="http://maps.google.com/maps?daddr={{bar.address}}+CA">
+            <ion-item ng-repeat="bar in beerBars" class="item item-button-right" ng-href="http://maps.google.com/maps?daddr={{bar.address}}+CA" target="_blank">
 
               <p>{{bar.name}}</p>
               <p>{{bar.address}} {{bar.zip_code}}</p>

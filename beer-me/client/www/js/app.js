@@ -15,8 +15,7 @@ app.run(function($ionicPlatform) {
 })
 
 app.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
-  $ionicConfigProvider.backButton.text('').icon('ion-ios7-arrow-left');
-
+  
   $stateProvider
     .state('home', {
       url: '/',
