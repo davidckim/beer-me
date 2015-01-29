@@ -14,8 +14,10 @@ app.run(function($ionicPlatform) {
   });
 })
 
-app.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+app.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $compileProvider) {
   
+  $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|file|tel|chrome-extension|geo):/);
+
   $stateProvider
   
     .state('tabs', {
@@ -124,7 +126,7 @@ app.controller("MapCtrl", function($scope, $http, $ionicLoading, $state, $ionicP
 
   $scope.getBeersByZipCode = function() {
     $ionicLoading.show({
-      template: '<div style="width: 100%; background-color: #E8BD1B "><img src="../img/beerLoading.gif" width="100%" style="margin-top: 50%; margin-bottom: 50%"></div>'
+      template: '<div style="width: 100%; background-color: #E8BD1B "><img src="http://i.imgur.com/DOoqbnM.gif" width="100%" style="margin-top: 50%; margin-bottom: 50%"></div>'
     });
     $scope.zipCode = $scope.data.zipCode
     BeerService.getBeersList($scope.data.zipCode).then(function(response) {
@@ -136,7 +138,7 @@ app.controller("MapCtrl", function($scope, $http, $ionicLoading, $state, $ionicP
   
   $scope.getLocation = function() {
     $ionicLoading.show({
-        template: '<div style="width: 100%; background-color: #E8BD1B "><img src="../img/beerLoading.gif" width="100%" style="margin-top: 50%; margin-bottom: 50%"></div>'
+        template: '<div style="width: 100%; background-color: #E8BD1B "><img src="http://i.imgur.com/DOoqbnM.gif" width="100%" style="margin-top: 50%; margin-bottom: 50%"></div>'
     });
 
     MapService.getLocation().then(MapService.showPosition).then(function(data) {
@@ -151,22 +153,22 @@ app.controller("MapCtrl", function($scope, $http, $ionicLoading, $state, $ionicP
 
   $scope.getRating = function() {
     if ($scope.beerObject.rating == 'NR') {
-      $scope.ratingPic = "../img/nostars.png"
+      $scope.ratingPic = "http://i.imgur.com/azTKxgW.png"
     }
     if ($scope.beerObject.rating > 59) {
-      $scope.ratingPic = "../img/onestars.png"
+      $scope.ratingPic = "http://i.imgur.com/mX7YmSa.png"
     }
     if ($scope.beerObject.rating > 69) {
-      $scope.ratingPic = "../img/twostars.png"
+      $scope.ratingPic = "http://i.imgur.com/bcSZDnI.png"
     }
     if ($scope.beerObject.rating > 79) {
-      $scope.ratingPic = "../img/threestars.png"
+      $scope.ratingPic = "http://i.imgur.com/GChOEd3.png"
     }
     if ($scope.beerObject.rating > 89) {
-      $scope.ratingPic = "../img/fourstars.png"
+      $scope.ratingPic = "http://i.imgur.com/etZQwEa.png"
     }
     if ($scope.beerObject.rating > 99) {
-      $scope.ratingPic = "../img/fivestars.png"
+      $scope.ratingPic = "http://i.imgur.com/45VSUxD.png"
     }
   }
 

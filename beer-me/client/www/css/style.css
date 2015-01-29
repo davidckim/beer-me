@@ -28,7 +28,7 @@
 }
 
 .find-beer {
-  top: -80px;
+  top: -30px;
   left: 30px;
   position: absolute;
   font-weight: bold;
@@ -41,7 +41,7 @@
 }
 
 .zipcode-beer {
-  top: 10px;
+  top: 40px;
   left: 30px;
   position: absolute;
   font-weight: bold;
