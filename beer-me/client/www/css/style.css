@@ -70,14 +70,18 @@
   border-color: #A4A4A4;
 }
 
-.beer-search-box{
+.beer-search-box {
   padding: 0;
   height: 30px;
   border-radius: 32px;
   margin-bottom: 5px;
 }
 
+.keep-tabs-bottom {
+  bottom: 0;
+}
 
-
-
+.tab-nav {
+  bottom: 0;
+}
 
