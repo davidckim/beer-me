@@ -17,6 +17,13 @@ app.run(function($ionicPlatform) {
 app.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
   
   $stateProvider
+  
+    .state('tabs', {
+      url: "/tab",
+      abstract: true,
+      templateUrl: "templates/tabs.html"
+    })
+
     .state('home', {
       url: '/',
       templateUrl: "templates/home.html"
@@ -106,18 +113,20 @@ app.controller("MapCtrl", function($scope, $http, $ionicLoading, $state, $ionicP
   $scope.beers = "";
   $scope.beerObject = "";
   $scope.beerBars = "";
+  $scope.ratingPic = "";
 
   $scope.showBeerPage = function(beerObj) {
-    $scope.beerObject = beerObj
-    $scope.beerBars = beerObj.locations
+    $scope.beerObject = beerObj;
+    $scope.beerBars = beerObj.locations;
+    $scope.getRating();
     $state.go('beer');
   }
 
   $scope.getBeersByZipCode = function() {
     $ionicLoading.show({
-      template: '<div style="width: 100%; background-color: #E8BD1B "><img src="http://i.imgur.com/4GFDgbe.gif" width="100%" style="margin-top: 50%; margin-bottom: 50%"></div>'
+      template: '<div style="width: 100%; background-color: #E8BD1B "><img src="../img/beerLoading.gif" width="100%" style="margin-top: 50%; margin-bottom: 50%"></div>'
     });
-
+    $scope.zipCode = $scope.data.zipCode
     BeerService.getBeersList($scope.data.zipCode).then(function(response) {
       $scope.beers = response.data
       $ionicLoading.hide();
@@ -127,7 +136,7 @@ app.controller("MapCtrl", function($scope, $http, $ionicLoading, $state, $ionicP
   
   $scope.getLocation = function() {
     $ionicLoading.show({
-        template: '<div style="width: 100%; background-color: #E8BD1B "><img src="http://i.imgur.com/4GFDgbe.gif" width="100%" style="margin-top: 50%; margin-bottom: 50%"></div>'
+        template: '<div style="width: 100%; background-color: #E8BD1B "><img src="../img/beerLoading.gif" width="100%" style="margin-top: 50%; margin-bottom: 50%"></div>'
     });
 
     MapService.getLocation().then(MapService.showPosition).then(function(data) {
@@ -139,6 +148,27 @@ app.controller("MapCtrl", function($scope, $http, $ionicLoading, $state, $ionicP
       })
     })
   };
+
+  $scope.getRating = function() {
+    if ($scope.beerObject.rating == 'NR') {
+      $scope.ratingPic = "../img/nostars.png"
+    }
+    if ($scope.beerObject.rating > 59) {
+      $scope.ratingPic = "../img/onestars.png"
+    }
+    if ($scope.beerObject.rating > 69) {
+      $scope.ratingPic = "../img/twostars.png"
+    }
+    if ($scope.beerObject.rating > 79) {
+      $scope.ratingPic = "../img/threestars.png"
+    }
+    if ($scope.beerObject.rating > 89) {
+      $scope.ratingPic = "../img/fourstars.png"
+    }
+    if ($scope.beerObject.rating > 99) {
+      $scope.ratingPic = "../img/fivestars.png"
+    }
+  }
 
   $scope.zipcodePop = function() {
     $ionicPopup.show({
@@ -154,7 +184,6 @@ app.controller("MapCtrl", function($scope, $http, $ionicLoading, $state, $ionicP
       ]
     })
   }
-
 });
 
 

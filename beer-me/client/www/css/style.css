@@ -37,3 +37,32 @@
   margin-top: 290px;
 }
 
+.roboto-font {
+  font-family: Roboto;
+}
+
+.oswald-font {
+  font-family: Oswald;
+}
+
+.pane {
+  background: #A4A4A4;
+}
+
+.bottom-border {
+  border-width: 1px;
+  border-color: #A4A4A4;
+}
+
+.beer-search-box{
+  padding: 0;
+  height: 30px;
+  border-radius: 32px;
+  margin-bottom: 5px;
+}
+
+
+
+
+
+

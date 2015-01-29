@@ -1,42 +1,48 @@
 
       <ion-view view-title='<img src="http://i.imgur.com/ivXdRk4.png">  <img src="http://i.imgur.com/syjOJN2.png">'>
         <ion-nav-bar class="bar-energized">
-          <ion-nav-back-button class="button-icon ion-arrow-left-c">
-          </ion-nav-back-button>
-          <ion-nav-buttons side="right">
-            <a ui-sref='about' class="button button-icon icon ion-information-circled"></a>
-          </ion-nav-buttons> 
         </ion-nav-bar>
 
+        <ion-nav-buttons side="right">
+          <a ui-sref='about' class="button button-icon icon ion-information-circled"></a>
+        </ion-nav-buttons> 
+
         <ion-content class="padding"
-             start-y="55"
+             start-y="40"
              padding="false"
              has-tabs="true"
              has-header="true">
 
-        <div ng-if='beers != 0' style=''>
-          <div id="search-box" class="bar bar-header item-input-inset">
+        <div ng-if='beers != 0'>
+          <div id="search-box" class="bar bar-header item-input-inset beer-search-box">
             <div class="item-input-wrapper">
               <i class="icon ion-ios7-search placeholder-icon"></i>
-              <input type="search" placeholder="Search for a Beer" ng-model="data.searchQuery">
+              <input type="search" placeholder="Search for a Tap" ng-model="data.searchQuery">
             </div>
           </div>
-
-          <ion-list>
-            <div class="item item-divider beer-list-title">
-              <b>Beers on tap in {{zipCode}}</b>
+          <ion-list style="opacity: 0.6;">
+            <div class="item item-divider beer-list-title" style="background: #424242; color: white">
+              <b class="oswald-font">Beers on tap in {{zipCode}}</b>
             </div>
-            <ion-item ng-repeat="beer in beers | filter: data.searchQuery" class="item item-avatar" ng-click="showBeerPage({{beer}})">
+            <ion-item ng-repeat="beer in beers | filter: data.searchQuery" class="bottom-border item item-avatar" ng-click="showBeerPage({{beer}})">
               <img src="{{beer.image}}" >
-              <h3>{{beer.name}}</h3>
-              <p>Rarity: {{beer.rank}}</p>
+              <h3 class="roboto-font"><b>{{beer.name}}</b></h3>
+              <p class="roboto-font"><b>Rarity:</b> {{beer.rank}}</p>
             </ion-item>
           </ion-list>
         </div>
 
         <div ng-if='beers.length == 0'>
-          <h1><b>Sorry!</b></h1>
-          <h4>We currently do not have any listed beers for that location! Please press back and try a different zipcode. Thank you</h4>
+          <div class="card">
+            <div class="item item-text-wrap">
+              <h1><b class="roboto-font">Oops..</b></h1>
+              <p class="roboto-font">We currently do not have any beer listings for this location!</p> 
+              <p>Please press back and try a different zipcode.</p>
+              <div class="sad-stick">
+                <img src="../img/sadstick.png" height='370'>
+              </div>
+            </div>
+          </div>
         </div>
 
         </ion-content>

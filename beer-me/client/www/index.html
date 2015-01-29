@@ -19,11 +19,31 @@
     <script src="js/angular-ui-router.js"></script>
     <script src="js/angular-ui-router.min.js"></script>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDCHnqpjDoIiBws0zjQE8gKUAQb4rguVx0&sensor=false"></script>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oswald">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto">
   </head>
 
 
   <body ng-controller="MapCtrl">
+
     <ion-nav-view></ion-nav-view>
+
+        <ion-tabs class="tabs-icon-top">
+
+          <ion-tab title="Find Taps" icon="ion-location" ui-sref="home">
+            <ion-nav-view name="find-tab"></ion-nav-view>
+          </ion-tab>
+
+          <ion-tab title="Beers List" icon="ion-beer" ui-sref="beers">
+            <ion-nav-view name="beers-tab"></ion-nav-view>
+          </ion-tab>
+
+          <ion-tab title="Beer Info" icon="ion-document-text" ui-sref="beer">
+            <ion-nav-view name="beer-tab"></ion-nav-view>
+          </ion-tab>
+
+        </ion-tabs>
+
   </body>
 
 
