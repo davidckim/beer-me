@@ -147,22 +147,37 @@ app.controller("MapCtrl", function($scope, $http, $ionicLoading, $state, $ionicP
 
   $scope.getRating = function() {
     if ($scope.beerObject.rating == 'NR') {
-      $scope.ratingPic = "http://i.imgur.com/azTKxgW.png"
+      $scope.ratingPic = "http://i.imgur.com/6Ve5wex.png"
+    }
+    if ($scope.beerObject.rating > 54) {
+      $scope.ratingPic = "http://i.imgur.com/9eFA4KP.png"
     }
     if ($scope.beerObject.rating > 59) {
-      $scope.ratingPic = "http://i.imgur.com/mX7YmSa.png"
+      $scope.ratingPic = "http://i.imgur.com/QDALcgA.jpg"
+    }
+    if ($scope.beerObject.rating > 64) {
+      $scope.ratingPic = "http://i.imgur.com/SnTiZ3l.png"
     }
     if ($scope.beerObject.rating > 69) {
-      $scope.ratingPic = "http://i.imgur.com/bcSZDnI.png"
+      $scope.ratingPic = "http://i.imgur.com/n0PaX4O.png"
+    }
+    if ($scope.beerObject.rating > 74) {
+      $scope.ratingPic = "http://i.imgur.com/EbVUJ1l.png"
     }
     if ($scope.beerObject.rating > 79) {
-      $scope.ratingPic = "http://i.imgur.com/GChOEd3.png"
+      $scope.ratingPic = "http://i.imgur.com/POCFukQ.png"
+    }
+    if ($scope.beerObject.rating > 84) {
+      $scope.ratingPic = "http://i.imgur.com/v4r6qGU.png"
     }
     if ($scope.beerObject.rating > 89) {
-      $scope.ratingPic = "http://i.imgur.com/etZQwEa.png"
+      $scope.ratingPic = "http://i.imgur.com/KwttmbF.png"
+    }
+    if ($scope.beerObject.rating > 94) {
+      $scope.ratingPic = "http://i.imgur.com/V957wFJ.png"
     }
     if ($scope.beerObject.rating > 99) {
-      $scope.ratingPic = "http://i.imgur.com/45VSUxD.png"
+      $scope.ratingPic = "http://i.imgur.com/cLMTtIn.png"
     }
   }
 
